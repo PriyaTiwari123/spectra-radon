@@ -1,7 +1,7 @@
-//App.jsx
+// App.jsx
 import { useEffect, useState } from "react";
 import { getSensorData, getWeatherData } from "./api/apiClient";
-
+import AIRecommendation from "./components/AIRecommendation"; // ✅ new import
 
 function App() {
   const [sensorData, setSensorData] = useState(null);
@@ -30,19 +30,19 @@ function App() {
   return (
     <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
       <h1>Spectra Radon Dashboard</h1>
-        <div>
 
-    </div>
       {/* Weather Display */}
       {weather && (
-        <div style={{ 
-          background: "linear-gradient(135deg, #74b9ff, #0984e3)",
-          color: "white",
-          padding: "20px",
-          borderRadius: "10px",
-          marginBottom: "20px",
-          display: "inline-block"
-        }}>
+        <div
+          style={{
+            background: "linear-gradient(135deg, #74b9ff, #0984e3)",
+            color: "white",
+            padding: "20px",
+            borderRadius: "10px",
+            marginBottom: "20px",
+            display: "inline-block",
+          }}
+        >
           <h3 style={{ margin: "0 0 10px 0" }}>{weather.location} Weather</h3>
           <div style={{ fontSize: "2em", fontWeight: "bold" }}>
             {weather.temperature}°C
@@ -59,6 +59,11 @@ function App() {
         ) : (
           <p>Loading sensor data...</p>
         )}
+      </div>
+
+      {/*  AI Recommendation Card */}
+      <div style={{ marginTop: "30px" }}>
+        <AIRecommendation />
       </div>
     </div>
   );
