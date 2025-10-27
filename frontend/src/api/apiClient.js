@@ -22,4 +22,12 @@ export const getAIRecommendation = async () => {
   return response.data;
 };
 
+// -------- WEATHER API --------
+export const getWeatherData = async () => {
+  const response = await api.get("/weather"); 
+  return response.data;
+};
+
+
+
 export default api;
