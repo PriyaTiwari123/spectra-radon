@@ -62,7 +62,11 @@ export default function AIRecommendation() {
                 color: aiData.action === "TURN_ON" ? "green" : "gray",
               }}
             >
-              {aiData.action}
+            {aiData.action === "TURN_ON"
+              ? "Turn on"
+              : aiData.action === "TURN_OFF"
+              ? "Turn off"
+              : aiData.action}
             </strong>
           </p>
           <small style={{ color: "#666" }}>
