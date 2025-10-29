@@ -21,6 +21,7 @@ export const fetchWeatherData = async () => {
     return {
       temperature: data.current.temp_c,
       condition: data.current.condition.text,
+      humidity: data.current.humidity,
       location: data.location?.name || 'Unknown',
       success: true
     };

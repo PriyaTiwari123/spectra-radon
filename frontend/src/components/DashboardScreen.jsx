@@ -84,13 +84,14 @@ export default function DashboardScreen() {
         {/* Weather Data */}
         <Card>
           <CardHeader>
-            <CardTitle>Weather</CardTitle>
+            <CardTitle>Environment</CardTitle>
             <CardDescription>Current weather conditons</CardDescription>
           </CardHeader>
           <CardContent>
             {weather ? (
               <div style={{ fontSize: "14px", color: "#334155", lineHeight: "1.6" }}>
-                <p><strong>Temperature:</strong> {weather.temperature} °C</p>
+                <p><strong>Temperature:</strong> {weather.temperature}°C</p>
+                <p><strong>Humidity:</strong> {weather.humidity}%</p>
                 <p><strong>Condition:</strong> {weather.condition}</p>
                 <p><strong>Location:</strong> {weather.location}</p>
               </div>
@@ -102,7 +103,7 @@ export default function DashboardScreen() {
 
 
         {/* Sensor Data */}
-        <Card>
+        {/* <Card>
           <CardHeader>
             <CardTitle>Temperature</CardTitle>
             <CardDescription>
@@ -125,7 +126,7 @@ export default function DashboardScreen() {
           <CardContent>
               {sensorData ? sensorData.pressure : "Loading Sensor Data..."} hPa
           </CardContent>
-        </Card>
+        </Card> */}
       </div>
 
       {/* AI Recommendation Section */}
