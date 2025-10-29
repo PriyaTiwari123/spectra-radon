@@ -1,0 +1,35 @@
+/*components/card.css*/
+
+.card {
+  background: #ffffff; 
+  border: 1px solid #d0d7de; 
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); 
+  color: #0f172b; 
+}
+.card-header {
+  margin-bottom: 12px;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+}
+
+.card-content {
+  margin-top: 12px;
+}
+
+.card-footer {
+  margin-top: 16px;
+  text-align: right;
+}

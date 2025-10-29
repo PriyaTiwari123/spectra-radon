@@ -2,10 +2,27 @@
 import { useEffect, useState } from "react";
 import { getSensorData, getWeatherData } from "./api/apiClient";
 import AIRecommendation from "./components/AIRecommendation"; // ✅ new import
+import TopBar from "./components/TopBar";
+import SideBar from "./components/SideBar";
+import DashboardScreen from "./components/DashboardScreen";
+import FanControlScreen from "./components/FanControlScreen";
+
 
 function App() {
   const [sensorData, setSensorData] = useState(null);
   const [weather, setWeather] = useState(null);
+  const [activeScreen, setActiveScreen] = useState("dashboard");
+
+  function renderScreen() {
+    switch (activeScreen) {
+      case "dashboard":
+        return <DashboardScreen />;
+      case "control":
+        return <FanControlScreen />;
+      default:
+        return <DashboardScreen />;
+    }
+  }
 
   useEffect(() => {
     // Fetch sensor data
@@ -28,11 +45,16 @@ function App() {
   }, []);
 
   return (
-    <div style={{ padding: "20px", fontFamily: "sans-serif" }}>
-      <h1>Spectra Radon Dashboard</h1>
+    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+      <TopBar />
+      <div style={{ display: "flex", flex: 1 }}>
+        <SideBar activeScreen={activeScreen} setActiveScreen={setActiveScreen} />
+        <main style={{ flex: 1, padding: "20px", overflowY: "auto" }}>
+          {renderScreen()}
+        </main>
 
       {/* Weather Display */}
-      {weather && (
+      {/* {weather && (
         <div
           style={{
             background: "linear-gradient(135deg, #74b9ff, #0984e3)",
@@ -49,22 +71,23 @@ function App() {
           </div>
           <div>{weather.condition}</div>
         </div>
-      )}
+      )} */}
 
       {/* Sensor Data */}
-      <div style={{ marginTop: "20px" }}>
+      {/* <div style={{ marginTop: "20px" }}>
         <h3>Sensor Data</h3>
         {sensorData ? (
           <pre>{JSON.stringify(sensorData, null, 2)}</pre>
         ) : (
           <p>Loading sensor data...</p>
         )}
-      </div>
+      </div> */}
 
       {/*  AI Recommendation Card */}
-      <div style={{ marginTop: "30px" }}>
+      {/* <div style={{ marginTop: "30px" }}>
         <AIRecommendation />
-      </div>
+      </div>*/}
+    </div> 
     </div>
   );
 }
